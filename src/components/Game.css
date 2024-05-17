@@ -1,0 +1,141 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../assets/bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.logo-container {
+  position: absolute;
+  top: 20px; /* Adjust top position as needed */
+  left: 20px; /* Adjust left position as needed */
+}
+
+.logo-img {
+  width: 150px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  /* Add any additional styling for the logo image */
+}
+
+.BackImage {
+  width: 100%;
+  height: 300px;
+}
+
+.popcat-image {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popcat-image img {
+  width: 100%;
+    height: 596px; /* Adjust height as needed */
+    user-select: none; /* Prevent text selection */
+    -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
+}
+
+
+.heading {
+  font-size: 70px; /* Adjust font size of the heading */
+  color: rgb(255, 255, 255);
+  margin-bottom: 5px; /* Add spacing between the heading and the count */
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
+}
+
+.count {
+ color: rgb(255, 255, 255);
+  font-size: 70px;/* Adjust font size of the count */
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
+}
+
+
+.counter {
+  font-size: 40px;
+font-weight: bolder;
+  height: 49px;
+  /* background-color: black; */
+  color: white;
+  padding: 0px 10px 2px 10px;
+  margin-top: 40px;
+  position: relative;
+  top: 20%;
+  left: 1%;
+  text-align: center; /* Center the content horizontally */
+}
+
+.counter-bar {
+  position: relative;
+  bottom: 50px;
+  left: 0;
+  width: 50%;
+  background-color: rgba(51, 51, 51, 0.5); /* Transparent black background */
+  color: white;
+  padding: 20px;
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Distribute items equally */
+  align-items: center; /* Center items vertically */
+  font-size: 24px;
+}
+
+.total-pops {
+  margin-right: auto; /* Push to the left side */
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
+}
+
+.clicks {
+  margin-left: auto; /* Push to the right side */
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
+}
+
+.custom-bar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999; /* Ensure it's above other content */
+  background-color: #000;
+  color: #F2F2ED;
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  cursor: pointer;
+  border-radius: 9999px; /* Rounded shape */
+  font-size: 0.75rem; /* Adjust font size as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   /* Initially hide the bar */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+ 
+  transform: translateX(20px); /* Offset the initial position */
+
+  
+}
+
+
+
+
+.custom-bar:hover {
+  opacity: 1; /* Show the full bar on hover */
+  transform: translateX(0); /* Slide the bar in */
+}
+
+.custom-bar span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-bar img {
+  width: 1.25rem; /* Adjust image size as needed */
+  height: 1.25rem; /* Adjust image size as needed */
+}
