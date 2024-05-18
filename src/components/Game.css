@@ -37,9 +37,17 @@
 
 .popcat-image img {
   width: 100%;
-    height: 596px; /* Adjust height as needed */
-    user-select: none; /* Prevent text selection */
-    -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
+    /* height: 596px;  */
+    user-select: none; 
+    -webkit-user-drag: none; 
+
+
+
+    width: 100%;
+    height: 570px;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin-bottom: 55px;
 }
 
 
@@ -75,12 +83,12 @@ font-weight: bolder;
 
 .counter-bar {
   position: relative;
-  bottom: 50px;
+  bottom: 150px;
   left: 0;
   width: 50%;
   background-color: rgba(51, 51, 51, 0.5); /* Transparent black background */
   color: white;
-  padding: 20px;
+  padding: 16px;
   display: flex; /* Use flexbox for layout */
   justify-content: space-between; /* Distribute items equally */
   align-items: center; /* Center items vertically */
@@ -138,4 +146,114 @@ font-weight: bolder;
 .custom-bar img {
   width: 1.25rem; /* Adjust image size as needed */
   height: 1.25rem; /* Adjust image size as needed */
+}
+
+
+
+/* Existing CSS */
+
+/* Add media queries for responsiveness */
+@media (max-width: 1200px) {
+  .heading {
+    font-size: 60px;
+  }
+  .count {
+    font-size: 60px;
+  }
+  .counter-bar {
+    width: 60%;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .heading {
+    font-size: 50px;
+  }
+  .count {
+    font-size: 50px;
+  }
+  .counter-bar {
+    width: 70%;
+    font-size: 18px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 40px;
+  }
+  .count {
+    font-size: 40px;
+  }
+  .counter-bar {
+    width: 80%;
+    font-size: 16px;
+    padding: 10px;
+  }
+  .popcat-image img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 30px;
+  }
+  .logo-img {
+    width: 120px;
+  }
+  .custom-bar {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading {
+    font-size: 30px;
+  }
+  .count {
+    font-size: 30px;
+  }
+  .counter-bar {
+    width: 90%;
+    font-size: 14px;
+    padding: 8px;
+  }
+  .popcat-image img {
+    width: 70%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .logo-img {
+    width: 100px;
+  }
+  .custom-bar {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 25px;
+  }
+  .count {
+    font-size: 25px;
+  }
+  .counter-bar {
+    width: 95%;
+    font-size: 12px;
+    padding: 6px;
+  }
+  .popcat-image img {
+    width: 60%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  .logo-img {
+    width: 80px;
+  }
+  .custom-bar {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.5rem;
+  }
 }

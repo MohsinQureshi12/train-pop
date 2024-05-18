@@ -28,6 +28,15 @@ const Game = () => {
         incrementCounters();
     };
 
+    const handleTouchStart = () => {
+        setIsOpen(true); // Set isOpen to true when touch starts
+    };
+
+    const handleTouchEnd = () => {
+        setIsOpen(false); // Set isOpen to false when touch ends
+        incrementCounters();
+    };
+
     useEffect(() => {
         localStorage.setItem('totalClicks', clicks);
     }, [clicks]);
@@ -47,38 +56,52 @@ const Game = () => {
             incrementCounters(); // Increment counters
         };
 
+        const handleGlobalTouchStart = (event) => {
+            setIsOpen(true); // Set isOpen to true when touch starts
+        };
+
+        const handleGlobalTouchEnd = (event) => {
+            setIsOpen(false); // Set isOpen to false when touch ends
+            incrementCounters(); // Increment counters
+        };
+
         document.addEventListener('mousedown', handleGlobalMouseDown);
         document.addEventListener('mouseup', handleGlobalMouseUp);
+        document.addEventListener('touchstart', handleGlobalTouchStart);
+        document.addEventListener('touchend', handleGlobalTouchEnd);
 
         return () => {
             document.removeEventListener('mousedown', handleGlobalMouseDown);
             document.removeEventListener('mouseup', handleGlobalMouseUp);
+            document.removeEventListener('touchstart', handleGlobalTouchStart);
+            document.removeEventListener('touchend', handleGlobalTouchEnd);
         };
     }, []);
 
     return (
         <div className="container">
-<div class="custom-bar" title="7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr">
-    <span>
-        <img class="logo" src="https://avatars.githubusercontent.com/u/92743431?s=280&amp;v=4" alt="Avatar" />
-        <span class="tab-text">CA: 7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr</span>
-    </span>
-</div>
+            <div className="custom-bar" title="7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr">
+                <span>
+                    <img className="logo" src="https://avatars.githubusercontent.com/u/92743431?s=280&amp;v=4" alt="Avatar" />
+                    <span className="tab-text">CA: 7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr</span>
+                </span>
+            </div>
 
-<div className="logo-container"> 
-    <img src={Logo} alt="logo" className="logo-img" />
-</div>
+            <div className="logo-container">
+                <img src={Logo} alt="logo" className="logo-img" />
+            </div>
 
+            <div className="counter">
+                <div className="heading">TrainPop</div>
+                <div className="count">{count}</div>
+            </div>
 
-<div className="counter">
-    <div className="heading">TrainPop</div>
-    <div className="count">{count}</div>
-</div>
             <div
-
                 className={`popcat-image ${isOpen ? 'open' : 'close'}`}
                 onMouseDown={(e) => { e.stopPropagation(); handleMouseDown(); }}
                 onMouseUp={(e) => { e.stopPropagation(); handleMouseUp(); }}
+                onTouchStart={(e) => { e.stopPropagation(); handleTouchStart(); }}
+                onTouchEnd={(e) => { e.stopPropagation(); handleTouchEnd(); }}
             >
                 <img src={isOpen ? OpenImage : CloseImage} alt="Popcat" />
             </div>
