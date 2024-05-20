@@ -13,28 +13,37 @@ const Game = () => {
         return storedClicks ? parseInt(storedClicks, 10) : 0;
     });
     const [isOpen, setIsOpen] = useState(false);
+    const [clicked, setClicked] = useState(false);
 
     const incrementCounters = () => {
-        setCount(prevCount => prevCount + 1); // Increment count
-        setClicks(prevClicks => prevClicks + 1); // Increment clicks count
+        setCount(prevCount => prevCount + 1);
+        setClicks(prevClicks => prevClicks + 1);
     };
 
     const handleMouseDown = () => {
-        setIsOpen(true); // Set isOpen to true when mouse is pressed down
+        setIsOpen(true);
+        if (!clicked) {
+            incrementCounters();
+            setClicked(true);
+        }
     };
 
     const handleMouseUp = () => {
-        setIsOpen(false); // Set isOpen to false when mouse button is released
-        incrementCounters();
+        setIsOpen(false);
+        setClicked(false);
     };
 
     const handleTouchStart = () => {
-        setIsOpen(true); // Set isOpen to true when touch starts
+        setIsOpen(true);
+        if (!clicked) {
+            incrementCounters();
+            setClicked(true);
+        }
     };
 
     const handleTouchEnd = () => {
-        setIsOpen(false); // Set isOpen to false when touch ends
-        incrementCounters();
+        setIsOpen(false);
+        setClicked(false);
     };
 
     useEffect(() => {
@@ -42,40 +51,7 @@ const Game = () => {
     }, [clicks]);
 
     useEffect(() => {
-        // Reset count when component mounts
         setCount(0);
-    }, []);
-
-    useEffect(() => {
-        const handleGlobalMouseDown = (event) => {
-            setIsOpen(true); // Set isOpen to true when mouse is pressed down
-        };
-
-        const handleGlobalMouseUp = (event) => {
-            setIsOpen(false); // Set isOpen to false when mouse button is released
-            incrementCounters(); // Increment counters
-        };
-
-        const handleGlobalTouchStart = (event) => {
-            setIsOpen(true); // Set isOpen to true when touch starts
-        };
-
-        const handleGlobalTouchEnd = (event) => {
-            setIsOpen(false); // Set isOpen to false when touch ends
-            incrementCounters(); // Increment counters
-        };
-
-        document.addEventListener('mousedown', handleGlobalMouseDown);
-        document.addEventListener('mouseup', handleGlobalMouseUp);
-        document.addEventListener('touchstart', handleGlobalTouchStart);
-        document.addEventListener('touchend', handleGlobalTouchEnd);
-
-        return () => {
-            document.removeEventListener('mousedown', handleGlobalMouseDown);
-            document.removeEventListener('mouseup', handleGlobalMouseUp);
-            document.removeEventListener('touchstart', handleGlobalTouchStart);
-            document.removeEventListener('touchend', handleGlobalTouchEnd);
-        };
     }, []);
 
     return (
@@ -98,10 +74,10 @@ const Game = () => {
 
             <div
                 className={`popcat-image ${isOpen ? 'open' : 'close'}`}
-                onMouseDown={(e) => { e.stopPropagation(); handleMouseDown(); }}
-                onMouseUp={(e) => { e.stopPropagation(); handleMouseUp(); }}
-                onTouchStart={(e) => { e.stopPropagation(); handleTouchStart(); }}
-                onTouchEnd={(e) => { e.stopPropagation(); handleTouchEnd(); }}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
             >
                 <img src={isOpen ? OpenImage : CloseImage} alt="Popcat" />
             </div>
