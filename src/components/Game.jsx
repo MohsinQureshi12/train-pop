@@ -3,7 +3,6 @@ import './Game.css';
 import '../App.css';
 import OpenImage from '../assets/OpenImage.png';
 import CloseImage from '../assets/CloseImage.png';
-// import BackGroundImage from '../assets/bg.png';
 import Logo from '../assets/Logo.png';
 
 const Game = () => {
@@ -13,7 +12,6 @@ const Game = () => {
         return storedClicks ? parseInt(storedClicks, 10) : 0;
     });
     const [isOpen, setIsOpen] = useState(false);
-    const [clicked, setClicked] = useState(false);
 
     const incrementCounters = () => {
         setCount(prevCount => prevCount + 1);
@@ -22,28 +20,11 @@ const Game = () => {
 
     const handleMouseDown = () => {
         setIsOpen(true);
-        if (!clicked) {
-            incrementCounters();
-            setClicked(true);
-        }
+        incrementCounters();
     };
 
     const handleMouseUp = () => {
         setIsOpen(false);
-        setClicked(false);
-    };
-
-    const handleTouchStart = () => {
-        setIsOpen(true);
-        if (!clicked) {
-            incrementCounters();
-            setClicked(true);
-        }
-    };
-
-    const handleTouchEnd = () => {
-        setIsOpen(false);
-        setClicked(false);
     };
 
     useEffect(() => {
@@ -73,11 +54,9 @@ const Game = () => {
             </div>
 
             <div
-                className={`popcat-image ${isOpen ? 'open' : 'close'}`}
+                className="popcat-image"
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
             >
                 <img src={isOpen ? OpenImage : CloseImage} alt="Popcat" />
             </div>
